@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 import DarkModeSwitcher from "./darkModeSwitcher";
 import SearchForm from "./searchForm";
 import DropdownUser from "./dropdownUser";
+import Logo from "@/components/ui/logo";
 
 const Header = (props: {
   sidebarOpen: string | boolean | undefined;
@@ -12,8 +13,8 @@ const Header = (props: {
   return (
     <header
       className={cn(
-        "sticky top-0 z-40 flex w-full border-b bg-white dark:bg-black",
-        "border-gray-200 dark:border-black"
+        "sticky top-0 z-40 flex w-full border-b bg-white dark:bg-gray-dark",
+        "border-stroke dark:border-stroke-dark"
       )}
     >
       <div
@@ -39,21 +40,21 @@ const Header = (props: {
               <span className="du-block absolute right-0 h-full w-full">
                 <span
                   className={cn(
-                    "relative left-0 top-0 my-1 block h-0.5 w-0 rounded-sm bg-black",
+                    "relative left-0 top-0 my-1 block h-0.5 w-0 rounded-sm bg-dark",
                     "dark:bg-white delay-[0] duration-200 ease-in-out",
                     !props.sidebarOpen && "!w-full delay-300"
                   )}
                 ></span>
                 <span
                   className={cn(
-                    "relative left-0 top-0 my-1 block h-0.5 w-0 rounded-sm bg-black",
+                    "relative left-0 top-0 my-1 block h-0.5 w-0 rounded-sm bg-dark",
                     "dark:bg-white delay-150 duration-200 ease-in-out",
                     !props.sidebarOpen && "delay-400 !w-full"
                   )}
                 ></span>
                 <span
                   className={cn(
-                    "relative left-0 top-0 my-1 block h-0.5 w-0 rounded-sm bg-black",
+                    "relative left-0 top-0 my-1 block h-0.5 w-0 rounded-sm bg-dark",
                     "dark:bg-white delay-200 duration-200 ease-in-out",
                     !props.sidebarOpen && "!w-full delay-500"
                   )}
@@ -62,14 +63,14 @@ const Header = (props: {
               <span className="absolute right-0 h-full w-full rotate-45">
                 <span
                   className={cn(
-                    "absolute left-2.5 top-0 block h-full w-0.5 rounded-sm bg-black",
+                    "absolute left-2.5 top-0 block h-full w-0.5 rounded-sm bg-dark",
                     "dark:bg-white delay-300 duration-200 ease-in-out",
                     !props.sidebarOpen && "!h-0 !delay-[0]"
                   )}
                 ></span>
                 <span
                   className={cn(
-                    "delay-400 absolute left-0 top-2.5 block h-0.5 w-full rounded-sm bg-black",
+                    "delay-400 absolute left-0 top-2.5 block h-0.5 w-full rounded-sm bg-dark",
                     "dark:bg-white duration-200 ease-in-out",
                     !props.sidebarOpen && "!h-0 !delay-200"
                   )}
@@ -90,10 +91,11 @@ const Header = (props: {
 
         <div className="hidden xl:block">
           <div>
-            <h1 className="mb-0.5 text-heading-5 font-bold text-black dark:text-white">
+            <Logo />
+            {/*  <h1 className="mb-0.5 text-heading-5 font-bold text-dark dark:text-white">
               Minimarket
             </h1>
-            <p className="font-medium">Anonimos S.A.</p>
+            <p className="font-medium">Anonimos S.A.</p>*/}
           </div>
         </div>
 

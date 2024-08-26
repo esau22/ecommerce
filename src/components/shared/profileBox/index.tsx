@@ -13,7 +13,7 @@ import {
 const ProfileBox = () => {
   return (
     <>
-      <div className="overflow-hidden rounded-[10px] bg-white shadow-1 dark:bg-[#122031] dark:shadow-card">
+      <div className="overflow-hidden rounded-[10px] bg-white shadow-1 dark:bg-gray-dark dark:shadow-card">
         <div className="relative z-20 h-35 md:h-65">
           <Image
             src="/images/cover/cover-01.png"
@@ -25,7 +25,7 @@ const ProfileBox = () => {
           <div className="absolute bottom-3 right-3 z-10 xsm:bottom-4 xsm:right-4">
             <label
               htmlFor="cover"
-              className="flex cursor-pointer items-center justify-center gap-2 rounded-[3px] bg-[#5750F1] px-[15px] py-[5px] text-body-sm font-medium text-white hover:bg-opacity-90"
+              className="flex cursor-pointer items-center justify-center gap-2 rounded-[3px] bg-primary px-[15px] py-[5px] text-body-sm font-medium text-white hover:bg-opacity-90"
             >
               <input
                 type="file"
@@ -55,7 +55,7 @@ const ProfileBox = () => {
 
             <label
               htmlFor="profilePhoto"
-              className="absolute bottom-0 right-0 flex h-9 w-9 cursor-pointer items-center justify-center rounded-full bg-[#5750F1] text-white hover:bg-opacity-90 sm:bottom-2 sm:right-2"
+              className="absolute bottom-0 right-0 flex h-9 w-9 cursor-pointer items-center justify-center rounded-full bg-primary text-white hover:bg-opacity-90 sm:bottom-2 sm:right-2"
             >
               <FaCamera />
               <input
@@ -68,33 +68,32 @@ const ProfileBox = () => {
             </label>
           </div>
           <div className="mt-4">
-            <h3 className="mb-1 text-heading-6 font-bold text-[#111928] dark:text-white">
+            <h3 className="mb-1 text-heading-6 font-bold text-dark dark:text-white">
               Danish Heilium
             </h3>
             <p className="font-medium">Ui/Ux Designer</p>
-            <div className="mx-auto mb-5 mt-5 grid max-w-[370px] grid-cols-3 rounded-[5px] border border-stroke py-[9px] shadow-1 dark:border-[#374151] dark:bg-[#1F2A37] dark:shadow-card">
-              <div className="flex flex-col items-center justify-center gap-1 border-r border-stroke px-4 dark:border-[#374151] xsm:flex-row">
-                <span className="font-medium text-[#111928] dark:text-white">
+            <div className="mx-auto mb-5 mt-5 grid max-w-[370px] grid-cols-3 rounded-[5px] border border-stroke py-[9px] shadow-1 dark:border-dark-3 dark:bg-dark-2 dark:shadow-card">
+              <div className="flex flex-col items-center justify-center gap-1 border-r border-stroke px-4 dark:border-dark-3 xsm:flex-row">
+                <span className="font-medium text-dark dark:text-white">
                   259
                 </span>
                 <span className="text-body-sm">Posts</span>
               </div>
-              <div className="flex flex-col items-center justify-center gap-1 border-r border-stroke px-4 dark:border-[#374151] xsm:flex-row">
-                <span className="font-medium text-[#111928] dark:text-white">
+              <div className="flex flex-col items-center justify-center gap-1 border-r border-stroke px-4 dark:border-dark-3 xsm:flex-row">
+                <span className="font-medium text-dark dark:text-white">
                   129K
                 </span>
                 <span className="text-body-sm">Followers</span>
               </div>
               <div className="flex flex-col items-center justify-center gap-1 px-4 xsm:flex-row">
-                <span className="font-medium text-[#111928] dark:text-white">
+                <span className="font-medium text-dark dark:text-white">
                   2K
                 </span>
                 <span className="text-body-sm-sm">Following</span>
               </div>
             </div>
-
             <div className="mx-auto max-w-[720px]">
-              <h4 className="font-medium text-[#111928] dark:text-white">
+              <h4 className="font-medium text-dark dark:text-white">
                 About Me
               </h4>
               <p className="mt-4">
@@ -105,9 +104,8 @@ const ProfileBox = () => {
                 pharetra ligula sed, aliquam lacus.
               </p>
             </div>
-
             <div className="mt-4">
-              <h4 className="mb-3.5 font-medium text-[#111928] dark:text-white">
+              <h4 className="mb-3.5 font-medium text-dark dark:text-white">
                 Follow me on
               </h4>
               <div className="flex items-center justify-center gap-3.5">

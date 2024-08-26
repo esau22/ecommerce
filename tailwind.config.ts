@@ -13,6 +13,20 @@ const config: Config = {
         primary: {
           DEFAULT: "hsl(var(--primary))",
         },
+        gray: {
+          DEFAULT: "hsl(var(--gray))",
+          dark: "hsl(var(--gray-dark))",
+          5: "hsl(var(--gray-dark-5))",
+        },
+        stroke: {
+          DEFAULT: "hsl(var(--stroke))",
+          dark: "hsl(var(--stroke-dark))",
+        },
+        dark: {
+          DEFAULT: "hsl(var(--dark))",
+          2: "hsl(var(--dark-2))",
+          3: "hsl(var(--dark-3))",
+        },
         background: {
           DEFAULT: "hsl(var(--background))",
           foreground: "hsl(var(--background-foreground))",

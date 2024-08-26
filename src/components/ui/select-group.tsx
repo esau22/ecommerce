@@ -22,11 +22,11 @@ const SelectGroup: FC<SelectGroupProps> = ({ label, className, options }) => {
 
   return (
     <div className="mb-4">
-      <label className="mb-3 block text-body-sm font-medium text-[#111928] dark:text-white">
+      <label className="mb-3 block text-body-sm font-medium text-dark dark:text-white">
         {label}
       </label>
 
-      <div className="relative z-20 bg-transparent dark:bg-[#374151]">
+      <div className="relative z-20 bg-transparent dark:bg-dark-3">
         <select
           value={selectedOption}
           onChange={(e) => {
@@ -34,8 +34,8 @@ const SelectGroup: FC<SelectGroupProps> = ({ label, className, options }) => {
             changeTextColor();
           }}
           className={cn(
-            `relative z-20 w-full mr-6 appearance-none rounded-[7px] border border-stroke bg-transparent px-5 py-2 outline-none transition focus:border-primary active:border-primary dark:border-[#374151] dark:bg-[#1F2A37] dark:focus:border-primary ${
-              isOptionSelected ? "text-[#111928] dark:text-white" : ""
+            `relative z-20 w-full mr-6 appearance-none rounded-[7px] border border-stroke bg-transparent px-5 py-2 outline-none transition focus:border-primary active:border-primary dark:border-dark-3 dark:bg-dark-2 dark:focus:border-primary ${
+              isOptionSelected ? "text-dark dark:text-white" : ""
             }`,
             className
           )}

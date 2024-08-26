@@ -4,7 +4,15 @@
 
 @layer base {
   :root {
-    --primary: 144 100% 43%;
+    --primary: 243, 87%, 63%;
+    --gray: 210, 43%, 96%;
+    --gray-dark: 207, 47%, 13%;
+    --gray-dark-5: 216, 10%, 66%;
+    --stroke: 210, 38%, 91%;
+    --stroke-dark: 210, 20%, 16%;
+    --dark: 210, 50%, 10%;
+    --dark-2: 210, 28%, 15%;
+    --dark-3: 210, 14%, 30%;
     --background: 220 3% 91%;
     --background-foreground: 0 0% 100%;
     --text: 0 0% 11%;

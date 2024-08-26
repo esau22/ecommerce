@@ -30,7 +30,7 @@ const packageData = [
 ];
 const TableClients = () => {
   return (
-    <div className="rounded-[10px] border border-stroke bg-white p-4 shadow-1 dark:border-[#374151] dark:bg-[#122031] dark:shadow-card sm:p-7">
+    <div className="rounded-[10px] border border-stroke bg-white p-4 shadow-1 dark:border-dark-3 dark:bg-gray-dark dark:shadow-card sm:p-7">
       <div className="flex items-center justify-between mb-4">
         <Breadcrumb pageName="Listado de Clientes" />
         <ButtonIcon
@@ -42,23 +42,23 @@ const TableClients = () => {
       <div className="max-w-full overflow-x-auto">
         <table className="w-full table-auto">
           <thead>
-            <tr className="bg-[#F7F9FC] text-left dark:bg-[#1F2A37]">
-              <th className="min-w-[50px] px-4 py-4 font-medium text-black dark:text-white xl:pl-7.5 text-center">
+            <tr className="bg-[#F7F9FC] text-left dark:bg-dark-2">
+              <th className="min-w-[50px] px-4 py-4 font-medium text-dark dark:text-white xl:pl-7 text-center">
                 #
               </th>
-              <th className="min-w-[50px] px-4 py-4 font-medium text-black dark:text-white xl:pl-7.5 text-center">
+              <th className="min-w-[50px] px-4 py-4 font-medium text-dark dark:text-white xl:pl-7 text-center">
                 ID
               </th>
-              <th className="min-w-[100px] px-4 py-4 font-medium text-black dark:text-white xl:pl-7.5 text-center">
+              <th className="min-w-[100px] px-4 py-4 font-medium text-dark dark:text-white xl:pl-7 text-center">
                 Nombre Completo
               </th>
-              <th className="min-w-[50px] px-4 py-4 font-medium text-black dark:text-white xl:pl-7.5 text-center">
+              <th className="min-w-[50px] px-4 py-4 font-medium text-dark dark:text-white xl:pl-7 text-center">
                 Deuda
               </th>
-              <th className="min-w-[50px] px-4 py-4 font-medium text-black dark:text-white xl:pl-7.5 text-center">
+              <th className="min-w-[50px] px-4 py-4 font-medium text-dark dark:text-white xl:pl-7 text-center">
                 Estado
               </th>
-              <th className="px-4 py-4 text-center font-medium text-dark dark:text-white xl:pr-7.5">
+              <th className="px-4 py-4 text-center font-medium text-dark dark:text-white xl:pr-7">
                 Acciones
               </th>
             </tr>
@@ -67,41 +67,41 @@ const TableClients = () => {
             {packageData.map((packageItem, index) => (
               <tr key={index}>
                 <td
-                  className={`border-[#eee] px-4 py-4 dark:border-[#374151] xl:pl-7.5 text-center ${
+                  className={`border-[#eee] px-4 py-4 dark:border-dark-3 xl:pl-7 text-center ${
                     index === packageData.length - 1 ? "border-b-0" : "border-b"
                   }`}
                 >
-                  <h5 className="text-black dark:text-white">
+                  <h5 className="text-dark dark:text-white">
                     {packageItem.serie}
                   </h5>
                 </td>
                 <td
-                  className={`border-[#eee] px-4 py-4 dark:border-[#374151] xl:pl-7.5 text-center ${
+                  className={`border-[#eee] px-4 py-4 dark:border-dark-3 xl:pl-7 text-center ${
                     index === packageData.length - 1 ? "border-b-0" : "border-b"
                   }`}
                 >
-                  <p className="text-black dark:text-white">{packageItem.id}</p>
+                  <p className="text-dark dark:text-white">{packageItem.id}</p>
                 </td>
                 <td
-                  className={`border-[#eee] px-4 py-4 dark:border-[#374151] xl:pl-7.5 text-center ${
+                  className={`border-[#eee] px-4 py-4 dark:border-dark-3 xl:pl-7 text-center ${
                     index === packageData.length - 1 ? "border-b-0" : "border-b"
                   }`}
                 >
-                  <p className="text-black dark:text-white">
+                  <p className="text-dark dark:text-white">
                     {packageItem.codigo}
                   </p>
                 </td>
                 <td
-                  className={`border-[#eee] px-4 py-4 dark:border-[#374151] xl:pl-7.5 text-center ${
+                  className={`border-[#eee] px-4 py-4 dark:border-dark-3 xl:pl-7 text-center ${
                     index === packageData.length - 1 ? "border-b-0" : "border-b"
                   }`}
                 >
-                  <p className="text-black dark:text-white">
+                  <p className="text-dark dark:text-white">
                     {packageItem.nombre}
                   </p>
                 </td>
                 <td
-                  className={`border-[#eee] px-4 py-4 dark:border-[#374151] xl:pl-7.5 text-center ${
+                  className={`border-[#eee] px-4 py-4 dark:border-dark-3 xl:pl-7 text-center ${
                     index === packageData.length - 1 ? "border-b-0" : "border-b"
                   }`}
                 >
@@ -113,7 +113,7 @@ const TableClients = () => {
                   </div>
                 </td>
                 <td
-                  className={`border-[#eee] px-4 py-4 dark:border-[#374151] xl:pl-7.5 text-center ${
+                  className={`border-[#eee] px-4 py-4 dark:border-dark-3 xl:pl-7 text-center ${
                     index === packageData.length - 1 ? "border-b-0" : "border-b"
                   }`}
                 >

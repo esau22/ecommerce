@@ -19,7 +19,7 @@ const SidebarItem = ({ item, pageName, setPageName }: any) => {
           onClick={handleClick}
           className={`${
             pageName === item.label.toLowerCase()
-              ? "bg-[#5750F1]/[.07] text-[#5750F1] dark:bg-white/10 dark:text-white"
+              ? "bg-[#5750F1]/[.07] text-primary dark:bg-white/10 dark:text-white"
               : "text-[#4B5563] hover:bg-[#F3F4F6] hover:text-[#111928] dark:text-[#9CA3AF] dark:hover:bg-white/10 dark:hover:text-white"
           } group relative flex items-center gap-3 rounded-[7px] px-3.5 py-3 font-medium duration-300 ease-in-out`}
         >
