@@ -25,7 +25,7 @@ const Cart = () => {
           showCart ? "top-0 delay-300" : "-top-full"
         )}
       >
-        <div className="basis-11/12 overflow-y-auto flex flex-col border-2 rounded-4xl p-6">
+        <div className="basis-11/12 overflow-y-auto flex flex-col bg-background-foreground border-2 rounded-4xl p-6">
           <section className="basis-1/12">
             <h1 className="text-2xl font-medium text-dark dark:text-white mb-4">
               Detalles de la orden
