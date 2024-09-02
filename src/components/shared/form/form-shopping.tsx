@@ -6,7 +6,7 @@ import { FaPlus } from "react-icons/fa";
 
 const FormShopping = () => {
   return (
-    <div className="rounded-[10px] border border-stroke bg-white p-4 shadow-1 dark:border-[#374151] dark:bg-[#122031] dark:shadow-card sm:p-7">
+    <div className="rounded-[10px] border border-stroke bg-white p-4 shadow-1 dark:border-dark-3 dark:bg-gray-dark dark:shadow-card sm:p-7">
       <div className="flex items-center justify-between mb-4">
         <Breadcrumb pageName="Nueva Compra" />
         <ButtonIcon icon={FaPlus} label="Agregar Producto" />

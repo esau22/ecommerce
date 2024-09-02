@@ -1,6 +1,6 @@
 import ButtonIcon from "@/components/ui/button-icons";
 import { MdDeleteForever, MdOutlineSearch } from "react-icons/md";
-import { FaPlus, FaRegEdit } from "react-icons/fa";
+import { FaPlus, FaRegEdit, FaEye } from "react-icons/fa";
 import Breadcrumb from "@/components/shared/Breadcrumb/breadcrumb";
 
 const packageData = [
@@ -133,6 +133,10 @@ const TableProducts = () => {
                     <ButtonIcon
                       icon={MdDeleteForever}
                       className="bg-red-500 dark:bg-red-800 hover:border-transparent"
+                    />
+                    <ButtonIcon
+                      icon={FaEye}
+                      className="bg-green-800 dark:bg-green-500 hover:border-transparent"
                     />
                   </div>
                 </td>

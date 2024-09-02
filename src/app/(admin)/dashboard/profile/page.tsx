@@ -3,7 +3,7 @@ import Breadcrumb from "@/components/shared/Breadcrumb/breadcrumb";
 const Profile = () => {
   return (
     <div className="mx-auto w-full max-w-[970px]">
-      <Breadcrumb pageName="Profile" />
+      <Breadcrumb pageName="Perfil" />
       <ProfileBox />
     </div>
   );

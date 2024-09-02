@@ -1,7 +1,9 @@
+import FormSales from "@/components/shared/form/form-sales";
+
 const MakeSales = () => {
   return (
     <div className="flex flex-col gap-10">
-      <h1>estamos en realizar ventas</h1>
+      <FormSales />
     </div>
   );
 };

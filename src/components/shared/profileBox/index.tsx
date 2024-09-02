@@ -42,7 +42,7 @@ const ProfileBox = () => {
           </div>
         </div>
         <div className="px-4 pb-6 text-center lg:pb-8 xl:pb-11">
-          <div className="relative z-30 mx-auto -mt-24 h-30 w-full max-w-30 rounded-full bg-white/20 p-1 backdrop-blur sm:h-44 sm:max-w-[176px] sm:p-3">
+          <div className="relative z-30 mx-auto -mt-16 h-30 w-full max-w-24 rounded-full bg-white/20 p-1 backdrop-blur sm:-mt-24 sm:h-44 sm:max-w-[176px] sm:p-3">
             <div className="relative drop-shadow-2">
               <Image
                 src="/images/users/user-03.png"
@@ -68,10 +68,10 @@ const ProfileBox = () => {
             </label>
           </div>
           <div className="mt-4">
-            <h3 className="mb-1 text-heading-6 font-bold text-dark dark:text-white">
+            <h3 className="mb-1 text-heading-6 font-bold text-dark dark:text-white text-lg sm:text-xl">
               Danish Heilium
             </h3>
-            <p className="font-medium">Ui/Ux Designer</p>
+            <p className="font-medium text-sm sm:text-base">Ui/Ux Designer</p>
             <div className="mx-auto mb-5 mt-5 grid max-w-[370px] grid-cols-3 rounded-[5px] border border-stroke py-[9px] shadow-1 dark:border-dark-3 dark:bg-dark-2 dark:shadow-card">
               <div className="flex flex-col items-center justify-center gap-1 border-r border-stroke px-4 dark:border-dark-3 xsm:flex-row">
                 <span className="font-medium text-dark dark:text-white">
@@ -92,7 +92,7 @@ const ProfileBox = () => {
                 <span className="text-body-sm-sm">Following</span>
               </div>
             </div>
-            <div className="mx-auto max-w-[720px]">
+            <div className="mx-auto max-w-[720px] text-sm sm:text-base">
               <h4 className="font-medium text-dark dark:text-white">
                 About Me
               </h4>
