@@ -1,0 +1,114 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+//Todo: Creacion de las Tablas
+model User{
+  id        Int      @id @default(autoincrement())
+  dni       Int      @unique
+  username  String   @unique
+  image     Bytes?
+  password  String
+  email     String   @unique
+  role      String   // Ej: 'admin', 'vendedor'
+  state     String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  Sales     Sale[]   // Relación uno a muchos con Ventas
+  Reports   Report[] // Relación uno a muchos con Reportes
+}
+model Customer {
+  id        Int      @id @default(autoincrement())
+  dni       Int      @unique
+  firstName String
+  lastName  String
+  email     String   @unique
+  phone     String
+  address   String
+  state     String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  Sales     Sale[]   // Relación uno a muchos con Ventas
+}
+
+model Supplier {
+  id          Int      @id @default(autoincrement())
+  ruc         Int      @unique
+  name        String
+  contactName String
+  phone       String
+  email       String
+  address     String
+  state       String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  Products    Product[] // Relación uno a muchos con Productos
+}
+
+model Category {
+  id          Int      @id @default(autoincrement())
+  name        String
+  description String?
+  state       String
+  Products    Product[] // Relación uno a muchos con Productos
+}
+
+model Product {
+  id            Int      @id @default(autoincrement())
+  name          String
+  image         String?
+  description   String?
+  purchasePrice Float
+  salesPrice    Float
+  stockQuantity Int
+  supplierId    Int
+  categoryId    Int
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  Supplier      Supplier @relation(fields: [supplierId], references: [id])
+  Category      Category @relation(fields: [categoryId], references: [id])
+  SalesDetails  SalesDetail[] // Relación uno a muchos con Detalles de Ventas
+}
+
+model Sale {
+  id           Int      @id @default(autoincrement())
+  customerId   Int
+  userId       Int
+  totalAmount  Float
+  saleDate     DateTime
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  Customer     Customer @relation(fields: [customerId], references: [id])
+  User         User     @relation(fields: [userId], references: [id])
+  SalesDetails SalesDetail[] // Relación uno a muchos con Detalles de Ventas
+}
+
+model SalesDetail {
+  id        String   @id @default(uuid())
+  saleId    Int
+  productId Int
+  quantity  Int
+  price     Float
+  subtotal  Float
+  Sale      Sale     @relation(fields: [saleId], references: [id])
+  Product   Product  @relation(fields: [productId], references: [id])
+}
+
+model Report {
+  id         Int      @id @default(autoincrement())
+  userId     Int
+  reportType String   // Ej: 'Ventas', 'Inventario'
+  createdAt  DateTime @default(now())
+  User       User     @relation(fields: [userId], references: [id])
+}

@@ -1,27 +1,49 @@
-import { categories } from "@/assets/data";
+"use client";
+import { cn } from "@/lib/utils";
+import { Category } from "@/types/types";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
-const Categories = () => {
+interface CategoriesProps {
+  category: Category[];
+}
+
+const Categories = ({ category }: CategoriesProps) => {
+  const pathname = usePathname();
+
   return (
     <div>
-      <ul className="flex items-center gap-x-1 flex-nowrap border border-black/10 p-1 rounded-2xl max-w-full overflow-x-auto">
+      <ul className="flex items-center gap-y-1 flex-nowrap border border-black/10 dark:border-white/40 p-3 rounded-2xl max-w-full overflow-y-auto">
         <li>
-          <button
-            type="button"
-            className="py-3 px-6 bg-primary font-medium rounded-2xl"
+          <Link
+            href="/dashboard/sales/todas"
+            className={cn(
+              "py-2 px-8 font-medium rounded-2xl",
+              pathname === "/dashboard/sales/todas"
+                ? "bg-primary text-white"
+                : "hover:bg-white/30 dark:hover:bg-white/70"
+            )}
           >
             Todas
-          </button>
+          </Link>
         </li>
-        {categories.map((category) => (
-          <li key={category.category}>
-            <button
-              type="button"
-              className="py-3 px-6 font-medium rounded-2xl hover:bg-white/30 dark:hover:bg-white/70 transition-colors text-dark dark:text-white"
-            >
-              {category.category}
-            </button>
-          </li>
-        ))}
+        {category &&
+          Array.isArray(category) &&
+          category.map((cat) => (
+            <li key={cat.id}>
+              <Link
+                href={cat.name}
+                className={cn(
+                  "py-2 px-8 font-medium rounded-2xl",
+                  pathname === `/dashboard/sales/${cat.name}`
+                    ? "bg-primary text-white"
+                    : "hover:bg-white/30 dark:hover:bg-white/70"
+                )}
+              >
+                {cat.name}
+              </Link>
+            </li>
+          ))}
       </ul>
     </div>
   );

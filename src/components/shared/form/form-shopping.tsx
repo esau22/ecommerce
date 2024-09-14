@@ -15,7 +15,11 @@ const FormShopping = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
           <SelectGroup
             label="Tipo de Comprovante"
-            options={[{ label: "Activo" }, { label: "No Activo" }]}
+            value="boleta"
+            options={[
+              { label: "boleta", value: "boleta" },
+              { label: "factura", value: "factura" },
+            ]}
           />
           <Input label="Serie" type="number" />
           <Input label="Numero" type="number" />
@@ -23,19 +27,35 @@ const FormShopping = () => {
           <Input label="Fecha Vencimiento" type="date" />
           <SelectGroup
             label="Tipo de Comprovante"
-            options={[{ label: "Activo" }, { label: "No Activo" }]}
+            value="boleta"
+            options={[
+              { label: "boleta", value: "boleta" },
+              { label: "factura", value: "factura" },
+            ]}
           />
           <SelectGroup
             label="Moneda"
-            options={[{ label: "Activo" }, { label: "No Activo" }]}
+            value="boleta"
+            options={[
+              { label: "boleta", value: "boleta" },
+              { label: "factura", value: "factura" },
+            ]}
           />
           <SelectGroup
             label="Tipo de Cambio"
-            options={[{ label: "Activo" }, { label: "No Activo" }]}
+            value="boleta"
+            options={[
+              { label: "boleta", value: "boleta" },
+              { label: "factura", value: "factura" },
+            ]}
           />
           <SelectGroup
             label="Orden de Compra"
-            options={[{ label: "Activo" }, { label: "No Activo" }]}
+            value="boleta"
+            options={[
+              { label: "boleta", value: "boleta" },
+              { label: "factura", value: "factura" },
+            ]}
           />
         </div>
       </form>

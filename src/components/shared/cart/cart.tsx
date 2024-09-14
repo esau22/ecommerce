@@ -9,14 +9,11 @@ const Cart = () => {
   const [showCart, setShowCart] = useState<boolean>(false);
 
   const subtotalByProduct = productsCart.map(
-    (product) => product.price * product.quantity
+    (product) => product.salesPrice * product.quantity
   );
-
   const subtotal = subtotalByProduct.reduce((acc, curr) => acc + curr, 0);
 
-  const tax = subtotal * 0.16;
-
-  const total = subtotal + tax;
+  const total = subtotal;
   return (
     <>
       <aside
@@ -43,10 +40,6 @@ const Cart = () => {
               <li className="flex items-center justify-between">
                 <p className="text-gray-500 dark:text-gray-300">Subtotal</p>
                 <h3 className="text-lg font-bold">${subtotal.toFixed(2)}</h3>
-              </li>
-              <li className="flex items-center justify-between">
-                <p className="text-gray-500 dark:text-gray-300">IVA (16%)</p>
-                <h3 className="text-lg font-bold">${tax.toFixed(2)}</h3>
               </li>
               <li className="flex items-center justify-between">
                 <p className="text-gray-500 dark:text-gray-300">Total</p>

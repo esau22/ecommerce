@@ -7,7 +7,7 @@ interface CardQuantityProductProps {
 }
 
 const CardQuantityProduct = ({ product }: CardQuantityProductProps) => {
-  const { name, image, price, quantity } = product;
+  const { name, image, salesPrice, quantity } = product;
   return (
     <>
       <div className="flex items-center justify-between gap-x-5">
@@ -43,7 +43,7 @@ const CardQuantityProduct = ({ product }: CardQuantityProductProps) => {
           </button>
         </div>
         <h3 className="text-lg font-bold text-dark dark:text-white">
-          ${(quantity * price).toFixed(2)}
+          ${(quantity * salesPrice).toFixed(2)}
         </h3>
       </div>
     </>

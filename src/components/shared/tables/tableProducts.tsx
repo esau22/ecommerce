@@ -2,36 +2,17 @@ import ButtonIcon from "@/components/ui/button-icons";
 import { MdDeleteForever, MdOutlineSearch } from "react-icons/md";
 import { FaPlus, FaRegEdit, FaEye } from "react-icons/fa";
 import Breadcrumb from "@/components/shared/Breadcrumb/breadcrumb";
+import SearchForm from "../header/searchForm";
+import { fetchProduct } from "@/lib/fetch";
+import { Product } from "@/types/types";
 
-const packageData = [
-  {
-    serie: 1,
-    id: 3,
-    codigo: "00001",
-    nombre: "fideo",
-    precio_venta: 0.0,
-  },
-  {
-    serie: 2,
-    id: 4,
-    codigo: "00002",
-    nombre: "arroz",
-    precio_venta: 10.0,
-  },
-  {
-    serie: 3,
-    id: 5,
-    codigo: "00003",
-    nombre: "azucar",
-    precio_venta: 4.0,
-  },
-];
-
-const TableProducts = () => {
+const TableProducts = async () => {
+  const products: Product[] = await fetchProduct();
   return (
     <div className="rounded-[10px] border border-stroke bg-white p-4 shadow-1 dark:border-dark-3 dark:bg-gray-dark dark:shadow-card sm:p-7">
       <div className="flex items-center justify-between mb-4">
         <Breadcrumb pageName="Listado de Productos" />
+        <SearchForm />
         <ButtonIcon icon={FaPlus} label="Nuevo" className="w-auto sm:w-fit" />
       </div>
       <div className="max-w-full overflow-x-auto">
@@ -41,14 +22,11 @@ const TableProducts = () => {
               <th className="min-w-[50px] px-4 py-4 font-medium text-dark dark:text-white xl:pl-7.5 text-center">
                 #
               </th>
-              <th className="min-w-[50px] px-4 py-4 font-medium text-dark dark:text-white xl:pl-7.5 text-center">
-                ID
-              </th>
-              <th className="min-w-[100px] px-4 py-4 font-medium text-dark dark:text-white xl:pl-7.5 text-center">
-                Codigo
-              </th>
               <th className="min-w-[100px] px-4 py-4 font-medium text-dark dark:text-white xl:pl-7.5 text-center">
                 Nombre
+              </th>
+              <th className="min-w-[50px] px-4 py-4 font-medium text-dark dark:text-white xl:pl-7.5 text-center">
+                Descripcion
               </th>
               <th className="min-w-[50px] px-4 py-4 font-medium text-dark dark:text-white xl:pl-7.5 text-center">
                 Stock
@@ -62,46 +40,34 @@ const TableProducts = () => {
             </tr>
           </thead>
           <tbody>
-            {packageData.map((packageItem, index) => (
-              <tr key={index}>
+            {products.map((product, id) => (
+              <tr key={product.id}>
                 <td
                   className={`border-[#eee] px-4 py-4 dark:border-dark-3 xl:pl-7 text-center ${
-                    index === packageData.length - 1 ? "border-b-0" : "border-b"
+                    id === products.length - 1 ? "border-b-0" : "border-b"
                   }`}
                 >
-                  <h5 className="text-dark dark:text-white">
-                    {packageItem.serie}
-                  </h5>
+                  <h5 className="text-dark dark:text-white">{product.id}</h5>
                 </td>
                 <td
                   className={`border-[#eee] px-4 py-4 dark:border-dark-3 xl:pl-7 text-center ${
-                    index === packageData.length - 1 ? "border-b-0" : "border-b"
+                    id === products.length - 1 ? "border-b-0" : "border-b"
                   }`}
                 >
-                  <p className="text-dark dark:text-white">{packageItem.id}</p>
+                  <p className="text-dark dark:text-white">{product.name}</p>
                 </td>
                 <td
                   className={`border-[#eee] px-4 py-4 dark:border-dark-3 xl:pl-7 text-center ${
-                    index === packageData.length - 1 ? "border-b-0" : "border-b"
+                    id === products.length - 1 ? "border-b-0" : "border-b"
                   }`}
                 >
                   <p className="text-dark dark:text-white">
-                    {packageItem.codigo}
+                    {product.description}
                   </p>
                 </td>
                 <td
                   className={`border-[#eee] px-4 py-4 dark:border-dark-3 xl:pl-7 text-center ${
-                    index === packageData.length - 1 ? "border-b-0" : "border-b"
-                  }`}
-                >
-                  <p className="text-dark dark:text-white">
-                    {packageItem.nombre}
-                  </p>
-                </td>
-
-                <td
-                  className={`border-[#eee] px-4 py-4 dark:border-dark-3 xl:pl-7 text-center ${
-                    index === packageData.length - 1 ? "border-b-0" : "border-b"
+                    id === products.length - 1 ? "border-b-0" : "border-b"
                   }`}
                 >
                   <div className="flex items-center justify-center">
@@ -113,16 +79,16 @@ const TableProducts = () => {
                 </td>
                 <td
                   className={`border-[#eee] px-4 py-4 dark:border-dark-3 xl:pl-7 text-center ${
-                    index === packageData.length - 1 ? "border-b-0" : "border-b"
+                    id === products.length - 1 ? "border-b-0" : "border-b"
                   }`}
                 >
                   <p className="text-dark dark:text-white">
-                    ${packageItem.precio_venta}
+                    $ {product.salesPrice}
                   </p>
                 </td>
                 <td
                   className={`border-[#eee] px-4 py-4 dark:border-dark-3 xl:pl-7 text-center ${
-                    index === packageData.length - 1 ? "border-b-0" : "border-b"
+                    id === products.length - 1 ? "border-b-0" : "border-b"
                   }`}
                 >
                   <div className="flex items-center justify-center gap-2">

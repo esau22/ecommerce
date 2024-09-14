@@ -4,16 +4,23 @@ import { FaAngleDown } from "react-icons/fa";
 import { cn } from "@/lib/utils";
 
 interface Option {
+  value?: string | number;
   label: string;
 }
 interface SelectGroupProps {
   label?: string;
+  value: string | number;
   className?: string;
   options: Option[];
 }
 
-const SelectGroup: FC<SelectGroupProps> = ({ label, className, options }) => {
-  const [selectedOption, setSelectedOption] = useState<string>("");
+const SelectGroup: FC<SelectGroupProps> = ({
+  label,
+  className,
+  options,
+  value,
+}) => {
+  const [selectedOption, setSelectedOption] = useState<string | number>(value);
   const [isOptionSelected, setIsOptionSelected] = useState<boolean>(false);
 
   const changeTextColor = () => {
@@ -41,7 +48,9 @@ const SelectGroup: FC<SelectGroupProps> = ({ label, className, options }) => {
           )}
         >
           {options.map((option, index) => (
-            <option key={index}>{option.label}</option>
+            <option key={index} value={option.value}>
+              {option.label}
+            </option>
           ))}
         </select>
         <span className="absolute right-4 top-1/2 z-30 -translate-y-1/2">

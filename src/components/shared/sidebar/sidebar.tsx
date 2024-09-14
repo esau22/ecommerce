@@ -1,7 +1,6 @@
-import React from "react";
 import Link from "next/link";
 import SidebarDropdown from "@/components/shared/sidebar/sidebarDropdown";
-import { FaAngleDown, FaArrowLeft } from "react-icons/fa";
+import { FaAngleDown } from "react-icons/fa";
 import { cn } from "@/lib/utils";
 
 const SidebarItem = ({ item, pageName, setPageName }: any) => {

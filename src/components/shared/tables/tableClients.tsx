@@ -4,31 +4,11 @@ import { FaPlus } from "react-icons/fa";
 import Breadcrumb from "@/components/shared/Breadcrumb/breadcrumb";
 import { FaRegEdit } from "react-icons/fa";
 import SelectGroup from "@/components/ui/select-group";
+import { fetchCustomer } from "@/lib/fetch";
+import { Customer } from "@/types/types";
 
-const packageData = [
-  {
-    serie: 1,
-    id: 3,
-    codigo: "raul estarda dias",
-    nombre: 456.23,
-    precio_venta: 0.0,
-  },
-  {
-    serie: 2,
-    id: 4,
-    codigo: "00002",
-    nombre: "arroz",
-    precio_venta: 10.0,
-  },
-  {
-    serie: 3,
-    id: 5,
-    codigo: "00003",
-    nombre: "azucar",
-    precio_venta: 4.0,
-  },
-];
-const TableClients = () => {
+const TableClients = async () => {
+  const customers: Customer[] = await fetchCustomer();
   return (
     <div className="rounded-[10px] border border-stroke bg-white p-4 shadow-1 dark:border-dark-3 dark:bg-gray-dark dark:shadow-card sm:p-7">
       <div className="flex items-center justify-between mb-4">
@@ -47,13 +27,13 @@ const TableClients = () => {
                 #
               </th>
               <th className="min-w-[50px] px-4 py-4 font-medium text-dark dark:text-white xl:pl-7 text-center">
-                ID
+                DNI
               </th>
               <th className="min-w-[100px] px-4 py-4 font-medium text-dark dark:text-white xl:pl-7 text-center">
                 Nombre Completo
               </th>
               <th className="min-w-[50px] px-4 py-4 font-medium text-dark dark:text-white xl:pl-7 text-center">
-                Deuda
+                Telefono
               </th>
               <th className="min-w-[50px] px-4 py-4 font-medium text-dark dark:text-white xl:pl-7 text-center">
                 Estado
@@ -64,57 +44,57 @@ const TableClients = () => {
             </tr>
           </thead>
           <tbody>
-            {packageData.map((packageItem, index) => (
-              <tr key={index}>
+            {customers.map((customer, id) => (
+              <tr key={customer.id}>
                 <td
                   className={`border-[#eee] px-4 py-4 dark:border-dark-3 xl:pl-7 text-center ${
-                    index === packageData.length - 1 ? "border-b-0" : "border-b"
+                    id === customers.length - 1 ? "border-b-0" : "border-b"
                   }`}
                 >
-                  <h5 className="text-dark dark:text-white">
-                    {packageItem.serie}
-                  </h5>
+                  <h5 className="text-dark dark:text-white">{customer.id}</h5>
                 </td>
                 <td
                   className={`border-[#eee] px-4 py-4 dark:border-dark-3 xl:pl-7 text-center ${
-                    index === packageData.length - 1 ? "border-b-0" : "border-b"
+                    id === customers.length - 1 ? "border-b-0" : "border-b"
                   }`}
                 >
-                  <p className="text-dark dark:text-white">{packageItem.id}</p>
+                  <p className="text-dark dark:text-white">{customer.dni}</p>
                 </td>
                 <td
                   className={`border-[#eee] px-4 py-4 dark:border-dark-3 xl:pl-7 text-center ${
-                    index === packageData.length - 1 ? "border-b-0" : "border-b"
+                    id === customers.length - 1 ? "border-b-0" : "border-b"
                   }`}
                 >
                   <p className="text-dark dark:text-white">
-                    {packageItem.codigo}
+                    {customer.lastName} {customer.firstName}
                   </p>
                 </td>
                 <td
                   className={`border-[#eee] px-4 py-4 dark:border-dark-3 xl:pl-7 text-center ${
-                    index === packageData.length - 1 ? "border-b-0" : "border-b"
+                    id === customers.length - 1 ? "border-b-0" : "border-b"
                   }`}
                 >
-                  <p className="text-dark dark:text-white">
-                    {packageItem.nombre}
-                  </p>
+                  <p className="text-dark dark:text-white">{customer.phone}</p>
                 </td>
                 <td
                   className={`border-[#eee] px-4 py-4 dark:border-dark-3 xl:pl-7 text-center ${
-                    index === packageData.length - 1 ? "border-b-0" : "border-b"
+                    id === customers.length - 1 ? "border-b-0" : "border-b"
                   }`}
                 >
                   <div className="flex items-center justify-center">
                     <SelectGroup
                       className="rounded-md"
-                      options={[{ label: "Activo" }, { label: "No Activo" }]}
+                      value={customer.state}
+                      options={[
+                        { label: "activo", value: "activo" },
+                        { label: "desactivo", value: "desactivo" },
+                      ]}
                     />
                   </div>
                 </td>
                 <td
                   className={`border-[#eee] px-4 py-4 dark:border-dark-3 xl:pl-7 text-center ${
-                    index === packageData.length - 1 ? "border-b-0" : "border-b"
+                    id === customers.length - 1 ? "border-b-0" : "border-b"
                   }`}
                 >
                   <div className="flex items-center justify-center gap-2">

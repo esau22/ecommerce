@@ -1,14 +1,26 @@
 "use client";
-import React, { useState, ReactNode } from "react";
+import { useState, ReactNode } from "react";
 import Sidebar from "@/components/shared/sidebar";
 import Header from "@/components/shared/header/header";
 
-export default function DashboardLayout({ children }: { children: ReactNode }) {
+interface DashboardLayoutProps {
+  children: ReactNode;
+  salesId: string; // Nueva propiedad para pasar el salesId al layout
+}
+export default function DashboardLayout({
+  children,
+  salesId,
+}: DashboardLayoutProps) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+
   return (
     <>
       <div className="flex h-screen overflow-hidden">
-        <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
+        <Sidebar
+          sidebarOpen={sidebarOpen}
+          setSidebarOpen={setSidebarOpen}
+          salesId={salesId}
+        />
 
         <div className="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden">
           <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />

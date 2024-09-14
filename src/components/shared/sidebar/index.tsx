@@ -1,6 +1,3 @@
-"use client";
-import React from "react";
-import { usePathname } from "next/navigation";
 import SidebarItem from "@/components/shared/sidebar/sidebar";
 import ClickOutside from "@/components/shared/hooks/clickOutside";
 import useLocalStorage from "@/components/shared/hooks/useLocalStorage";
@@ -21,82 +18,91 @@ import { RiApps2Fill, RiLogoutBoxLine } from "react-icons/ri";
 interface SidebarProps {
   sidebarOpen: boolean;
   setSidebarOpen: (arg: boolean) => void;
+  salesId: String; // Nueva propiedad para el id dinámico
 }
 
-const menuGroups = [
-  {
-    menuItems: [
-      {
-        icon: <FaHouseUser size={20} />,
-        label: "Dashboard",
-        route: "#",
-        children: [{ label: "eCommerce", route: "/dashboard" }],
-      },
-      {
-        icon: <FaShopify size={20} />,
-        label: "Ventas",
-        route: "#",
-        children: [
-          { label: "Control de Caja", route: "/dashboard/sales/cash-control" },
-          { label: "Realizar Ventas", route: "/dashboard/sales/make-sales" },
-        ],
-      },
-      {
-        icon: <FaShoppingBag size={20} />,
-        label: "Compras",
-        route: "/dashboard/shopping",
-      },
-      {
-        icon: <FaUsers size={20} />,
-        label: "Clientes",
-        route: "/dashboard/clients",
-      },
-      {
-        icon: <FaWpforms size={20} />,
-        label: "Productos",
-        route: "#",
-        children: [
-          { label: "Productos", route: "/dashboard/products" },
-          { label: "Categorias", route: "/dashboard/products/categories" },
-        ],
-      },
-      {
-        icon: <FaUser size={20} />,
-        label: "Usuarios",
-        route: "#",
-        children: [
-          { label: "Perfil", route: "/dashboard/profile" },
-          { label: "Usuarios", route: "/dashboard/profile/user" },
-        ],
-      },
-      {
-        icon: <FaTruck size={20} />,
-        label: "Proveedores",
-        route: "/dashboard/supplier",
-      },
-      {
-        icon: <RiApps2Fill size={20} />,
-        label: "UI Elements",
-        route: "#",
-        children: [
-          { label: "Alerts", route: "/ui-elements/alerts" },
-          { label: "Buttons", route: "/ui-elements/buttons" },
-        ],
-      },
-      {
-        icon: <RiLogoutBoxLine size={20} />,
-        label: "Authentication",
-        route: "#",
-        children: [{ label: "Sign In", route: "/auth/signin" }],
-      },
-    ],
-  },
-];
-
-const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
-  const pathname = usePathname();
-
+const Sidebar = ({ sidebarOpen, setSidebarOpen, salesId }: SidebarProps) => {
   const [pageName, setPageName] = useLocalStorage("selectedMenu", "dashboard");
+
+  const salesRoute = salesId
+    ? `/dashboard/sales/${salesId}`
+    : "/dashboard/sales/todas";
+
+  const menuGroups = [
+    {
+      menuItems: [
+        {
+          icon: <FaHouseUser size={20} />,
+          label: "Dashboard",
+          route: "#",
+          children: [{ label: "eCommerce", route: "/dashboard" }],
+        },
+        {
+          icon: <FaShopify size={20} />,
+          label: "Ventas",
+          route: "#",
+          children: [
+            {
+              label: "Realizar Ventas",
+              route: salesRoute,
+            },
+            {
+              label: "Control de Caja",
+              route: "/dashboard/sales/cash-control",
+            },
+          ],
+        },
+        {
+          icon: <FaShoppingBag size={20} />,
+          label: "Compras",
+          route: "/dashboard/shopping",
+        },
+        {
+          icon: <FaUsers size={20} />,
+          label: "Clientes",
+          route: "/dashboard/clients",
+        },
+        {
+          icon: <FaWpforms size={20} />,
+          label: "Productos",
+          route: "#",
+          children: [
+            { label: "Productos", route: "/dashboard/products" },
+            { label: "Categorias", route: "/dashboard/products/categories" },
+          ],
+        },
+        {
+          icon: <FaUser size={20} />,
+          label: "Usuarios",
+          route: "#",
+          children: [
+            { label: "Perfil", route: "/dashboard/profile" },
+            { label: "Usuarios", route: "/dashboard/profile/user" },
+          ],
+        },
+        {
+          icon: <FaTruck size={20} />,
+          label: "Proveedores",
+          route: "/dashboard/supplier",
+        },
+        {
+          icon: <RiApps2Fill size={20} />,
+          label: "UI Elements",
+          route: "#",
+          children: [
+            { label: "Alerts", route: "/ui-elements/alerts" },
+            { label: "Buttons", route: "/ui-elements/buttons" },
+          ],
+        },
+        {
+          icon: <RiLogoutBoxLine size={20} />,
+          label: "Authentication",
+          route: "#",
+          children: [{ label: "Sign In", route: "/auth/signin" }],
+        },
+      ],
+    },
+  ];
 
   return (
     <ClickOutside onClick={() => setSidebarOpen(false)}>
