@@ -1,13 +1,13 @@
-import { ProductCart } from "@/types/types";
+import { Product } from "@/types/types";
 import Image from "next/image";
 import { FaMinus, FaPlus } from "react-icons/fa";
 
 interface CardQuantityProductProps {
-  product: ProductCart;
+  product: Product;
 }
 
 const CardQuantityProduct = ({ product }: CardQuantityProductProps) => {
-  const { name, image, salesPrice, quantity } = product;
+  const { name, image, salesPrice, stockQuantity } = product;
   return (
     <>
       <div className="flex items-center justify-between gap-x-5">
@@ -24,7 +24,7 @@ const CardQuantityProduct = ({ product }: CardQuantityProductProps) => {
           </h5>
         </div>
         <span className="bg-background dark:bg-yellow-400 w-10 h-10 flex items-center justify-center rounded-full font-medium text-sm text-dark dark:text-white">
-          x{quantity}
+          x{stockQuantity}
         </span>
       </div>
       <div className="flex items-center justify-between gap-x-5 mt-3">
@@ -43,7 +43,7 @@ const CardQuantityProduct = ({ product }: CardQuantityProductProps) => {
           </button>
         </div>
         <h3 className="text-lg font-bold text-dark dark:text-white">
-          ${(quantity * salesPrice).toFixed(2)}
+          ${(stockQuantity * salesPrice).toFixed(2)}
         </h3>
       </div>
     </>

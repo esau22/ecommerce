@@ -1,15 +1,19 @@
 "use client";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
-import { productsCart } from "@/assets/data";
+//import { productsCart } from "@/assets/data";
+import { Product } from "@/types/types";
 import CardQuantityProduct from "./card-quantity-product";
 import { FaShoppingCart } from "react-icons/fa";
 
-const Cart = () => {
+interface CartProps {
+  products: Product[];
+}
+const Cart = ({ products }: CartProps) => {
   const [showCart, setShowCart] = useState<boolean>(false);
 
-  const subtotalByProduct = productsCart.map(
-    (product) => product.salesPrice * product.quantity
+  const subtotalByProduct = products.map(
+    (product) => product.salesPrice * product.stockQuantity
   );
   const subtotal = subtotalByProduct.reduce((acc, curr) => acc + curr, 0);
 
@@ -29,7 +33,7 @@ const Cart = () => {
             </h1>
           </section>
           <ul className="basis-8/12 max-h-full overflow-y-auto">
-            {productsCart.map((product) => (
+            {products.map((product) => (
               <li key={product.name} className="border p-3 rounded-3xl mb-3">
                 <CardQuantityProduct product={product} />
               </li>

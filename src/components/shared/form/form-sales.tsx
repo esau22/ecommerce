@@ -58,7 +58,7 @@ const FormSales = ({ products, category }: FormSalesProps) => {
           </ul>
         </div>
         <div className="w-full xl:w-2/5 p-4 lg:h-full">
-          <Cart />
+          <Cart products={products} />
         </div>
       </section>
     </div>
