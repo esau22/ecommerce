@@ -1,9 +1,11 @@
 import { NextResponse } from "next/server";
 import prisma from "@/lib/prisma";
 
-export async function GET(request: Request) {
-  const { searchParams } = new URL(request.url);
-  const id = searchParams.get("id");
+export async function Handler(
+  request: Request,
+  { params }: { params: { id: string } }
+) {
+  const { id } = params;
 
   try {
     // Convertir id a número
@@ -12,7 +14,7 @@ export async function GET(request: Request) {
     // Verificar si la conversión es válida
     if (isNaN(categoryId)) {
       return NextResponse.json(
-        { error: "ID de categoría no válido" },
+        { error: "ID de producto no válido" },
         { status: 400 }
       );
     }
