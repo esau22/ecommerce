@@ -1,6 +1,18 @@
 import { NextResponse } from "next/server";
 import prisma from "@/lib/prisma";
 
+export async function GET() {
+  try {
+    const product = await prisma.product.findMany();
+    return NextResponse.json(product, { status: 200 });
+  } catch (error) {
+    return NextResponse.json(
+      { error: "Error al recuperar los productos" },
+      { status: 500 }
+    );
+  }
+}
+
 export async function POST(request: Request) {
   try {
     // Extraer el cuerpo de la solicitud (JSON)
