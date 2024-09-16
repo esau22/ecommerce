@@ -1,34 +1,40 @@
+const BASE_URL = "http://localhost:3000/api";
+
+const handleFetch = async (url: string) => {
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    return response.json();
+  } catch (error) {
+    console.error("Fetch error:", error);
+    throw error;
+  }
+};
+
 export const fetchCategory = async (id?: number) => {
-  const url = id
-    ? `http://localhost:3000/api/categories/${id}` // Si se pasa un id, busca por categoría específica
-    : "http://localhost:3000/api/categories"; // Si no, obtiene todas las categorías
-  const response = await fetch(url);
-  return response.json();
+  const url = id ? `${BASE_URL}/categories/${id}` : `${BASE_URL}/categories`;
+  return handleFetch(url);
 };
 
 export const fetchCustomer = async () => {
-  const response = await fetch("http://localhost:3000/api/customer");
-  return response.json();
+  return handleFetch(`${BASE_URL}/customer`);
 };
 
 export const fetchProduct = async (id?: number) => {
-  const url = id
-    ? `http://localhost:3000/api/products/${id}` // Si se pasa un id, busca por categoría específica
-    : "http://localhost:3000/api/products"; // Si no, obtiene todas las categorías
-  const response = await fetch(url);
-  return response.json();
+  const url = id ? `${BASE_URL}/products/${id}` : `${BASE_URL}/products`;
+  return handleFetch(url);
 };
 
 export const fetchReport = async () => {
-  const response = await fetch("http://localhost:3000/api/report");
-  return response.json();
+  return handleFetch(`${BASE_URL}/report`);
 };
+
 export const fetchSupplier = async () => {
-  const response = await fetch("http://localhost:3000/api/supplier");
-  return response.json();
+  return handleFetch(`${BASE_URL}/supplier`);
 };
 
 export const fetchUser = async () => {
-  const response = await fetch("http://localhost:3000/api/user");
-  return response.json();
+  return handleFetch(`${BASE_URL}/user`);
 };
