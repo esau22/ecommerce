@@ -1,7 +1,7 @@
 export const fetchCategory = async (id?: number) => {
   const url = id
-    ? `http://localhost:3000/api/categorys/${id}` // Si se pasa un id, busca por categoría específica
-    : "http://localhost:3000/api/categorys"; // Si no, obtiene todas las categorías
+    ? `http://localhost:3000/api/categories/${id}` // Si se pasa un id, busca por categoría específica
+    : "http://localhost:3000/api/categories"; // Si no, obtiene todas las categorías
   const response = await fetch(url);
   return response.json();
 };
