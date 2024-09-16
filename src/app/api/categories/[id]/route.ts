@@ -34,6 +34,7 @@ export async function GET(
 
     return NextResponse.json(category, { status: 200 });
   } catch (error) {
+    console.error("Error al recuperar la categoría:", error);
     return NextResponse.json(
       { error: "Error al recuperar la categoría" },
       { status: 500 }
