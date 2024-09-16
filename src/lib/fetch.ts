@@ -1,4 +1,8 @@
-const BASE_URL = "http://localhost:3000/api";
+//Determina el BASE_URL dependiendo del entorno
+const BASE_URL =
+  process.env.NODE_ENV === "production"
+    ? "https://ecommerce-53veukg0u-esau22s-projects.vercel.app/api" // URL de tu aplicación desplegada
+    : "http://localhost:3000/api"; // URL local para desarrollo
 
 const handleFetch = async (url: string) => {
   try {
