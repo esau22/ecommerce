@@ -1,13 +1,20 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import prisma from "@/lib/prisma";
 
-export async function GET(
-  request: NextRequest,
-  { params }: { params: { id: number } }
-) {
+export async function GET({ params }: { params: { id: string } }) {
   const { id } = params;
 
   try {
+    // Convertir id a número
+    const categoryId = Number(id);
+
+    // Verificar si la conversión es válida
+    if (isNaN(categoryId)) {
+      return NextResponse.json(
+        { error: "ID de categoría no válido" },
+        { status: 400 }
+      );
+    }
     // Buscar la categoría por ID
     const products = await prisma.product.findUnique({
       where: {
