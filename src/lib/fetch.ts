@@ -1,9 +1,3 @@
-//Determina el BASE_URL dependiendo del entorno
-const BASE_URL =
-  process.env.NODE_ENV === "production"
-    ? "https://ecommerce-53veukg0u-esau22s-projects.vercel.app/api" // URL de tu aplicación desplegada
-    : "http://localhost:3000/api"; // URL local para desarrollo
-
 const handleFetch = async (url: string) => {
   try {
     const response = await fetch(url);
@@ -18,27 +12,27 @@ const handleFetch = async (url: string) => {
 };
 
 export const fetchCategory = async (id?: number) => {
-  const url = id ? `${BASE_URL}/categories/${id}` : `${BASE_URL}/categories`;
+  const url = id ? `api/categories/${id}` : "api/categories";
   return handleFetch(url);
 };
 
 export const fetchCustomer = async () => {
-  return handleFetch(`${BASE_URL}/customer`);
+  return handleFetch("api/customer");
 };
 
 export const fetchProduct = async (id?: number) => {
-  const url = id ? `${BASE_URL}/products/${id}` : `${BASE_URL}/products`;
+  const url = id ? `api/products/${id}` : "api/products";
   return handleFetch(url);
 };
 
 export const fetchReport = async () => {
-  return handleFetch(`${BASE_URL}/report`);
+  return handleFetch("api/report");
 };
 
 export const fetchSupplier = async () => {
-  return handleFetch(`${BASE_URL}/supplier`);
+  return handleFetch("api/supplier");
 };
 
 export const fetchUser = async () => {
-  return handleFetch(`${BASE_URL}/user`);
+  return handleFetch("api/user");
 };
