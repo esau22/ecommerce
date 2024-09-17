@@ -1,10 +1,9 @@
 import FormSales from "@/components/shared/form/form-sales";
 import { fetchCategory, fetchProduct } from "@/lib/fetch";
-import { Category, Product } from "@/types/types";
 
 const MakeSales = async () => {
-  let category: [];
-  let products: [];
+  let category;
+  let products;
 
   try {
     category = await fetchCategory();
