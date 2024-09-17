@@ -1,14 +1,9 @@
-// Determinar la URL base dependiendo del entorno
-const API_URL =
-  process.env.NODE_ENV === "development"
-    ? "http://localhost:3000" // Si estamos en desarrollo, usar localhost
-    : ""; // Si estamos en producción, usar rutas relativas
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000";
 
-// Obtener categorías (todas o por ID)
 export const fetchCategory = async (id?: number) => {
   const url = id
-    ? `${API_URL}/api/categories/${id}` // Obtener una categoría específica si se pasa ID
-    : `${API_URL}/api/categories`; // Obtener todas las categorías si no se pasa ID
+    ? `${API_URL}/api/categories/${id}` // URL completa en producción
+    : `${API_URL}/api/categories`; // URL completa en producción
   const response = await fetch(url);
   return response.json();
 };
