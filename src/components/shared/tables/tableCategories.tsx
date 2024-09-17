@@ -8,7 +8,16 @@ import { Category } from "@/types/types";
 import { fetchCategory } from "@/lib/fetch";
 
 const TableCategories = async () => {
-  const categories: Category[] = await fetchCategory();
+  let categories: Category[];
+  try {
+    categories = await fetchCategory();
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    // Puedes manejar el error de diferentes maneras, como mostrar un mensaje al usuario
+    // o usar valores predeterminados. Aquí, por ejemplo, podrías mostrar un mensaje simple:
+    return <div>Error loading data. Please try again later.</div>;
+  }
+
   return (
     <div className="rounded-[10px] border border-stroke bg-white p-4 shadow-1 dark:border-dark-3 dark:bg-gray-dark dark:shadow-card sm:p-7">
       <div className="flex items-center justify-between mb-4">
