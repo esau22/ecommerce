@@ -5,8 +5,7 @@ export const fetchCategory = async (id?: number) => {
     ? `${API_URL}/api/categories/${id}` // URL completa en producción
     : `${API_URL}/api/categories`; // URL completa en producción
   const response = await fetch(url);
-  const data = await response.json();
-  return Array.isArray(data) ? data : [];
+  return response.json();
 };
 
 // Obtener todos los clientes
@@ -21,8 +20,7 @@ export const fetchProduct = async (id?: number) => {
     ? `${API_URL}/api/products/${id}` // Obtener un producto específico si se pasa ID
     : `${API_URL}/api/products`; // Obtener todos los productos si no se pasa ID
   const response = await fetch(url);
-  const data = await response.json();
-  return Array.isArray(data) ? data : [];
+  return response.json();
 };
 
 // Obtener reportes
