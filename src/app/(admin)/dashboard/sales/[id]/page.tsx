@@ -3,8 +3,8 @@ import { fetchCategory, fetchProduct } from "@/lib/fetch";
 import { Category, Product } from "@/types/types";
 
 const MakeSales = async () => {
-  let category: Category[];
-  let products: Product[];
+  let category: [];
+  let products: [];
 
   try {
     category = await fetchCategory();
