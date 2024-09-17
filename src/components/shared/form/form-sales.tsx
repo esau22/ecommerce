@@ -44,7 +44,7 @@ const FormSales = ({ products = [], category = [] }: FormSalesProps) => {
         <div className="basis-4/5 xl:basis-3/4 p-5 lg:pr-2 overflow-y-auto">
           <Categories category={category} />
           <ul className="grid sm:grid-cols-2 gap-4 mt-6">
-            {filteredProducts.length > 0 ? (
+            {Array.isArray(filteredProducts) && filteredProducts.length > 0 ? (
               filteredProducts.map((product) => (
                 <li key={product.id}>
                   <CardProduct product={product} />
