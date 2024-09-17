@@ -47,6 +47,7 @@ const TableProducts = async () => {
               </th>
             </tr>
           </thead>
+
           <tbody>
             {products.map((product, id) => (
               <tr key={product.id}>

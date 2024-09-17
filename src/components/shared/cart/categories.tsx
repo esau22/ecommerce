@@ -27,23 +27,21 @@ const Categories = ({ category }: CategoriesProps) => {
             Todas
           </Link>
         </li>
-        {category &&
-          Array.isArray(category) &&
-          category.map((cat) => (
-            <li key={cat.id}>
-              <Link
-                href={cat.name}
-                className={cn(
-                  "py-2 px-8 font-medium rounded-2xl",
-                  pathname === `/dashboard/sales/${cat.name}`
-                    ? "bg-primary text-white"
-                    : "hover:bg-white/30 dark:hover:bg-white/70"
-                )}
-              >
-                {cat.name}
-              </Link>
-            </li>
-          ))}
+        {category.map((cat) => (
+          <li key={cat.id}>
+            <Link
+              href={cat.name}
+              className={cn(
+                "py-2 px-8 font-medium rounded-2xl",
+                pathname === `/dashboard/sales/${cat.name}`
+                  ? "bg-primary text-white"
+                  : "hover:bg-white/30 dark:hover:bg-white/70"
+              )}
+            >
+              {cat.name}
+            </Link>
+          </li>
+        ))}
       </ul>
     </div>
   );
