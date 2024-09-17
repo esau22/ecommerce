@@ -13,7 +13,7 @@ interface FormSalesProps {
   products: Product[];
 }
 
-const FormSales = ({ products, category }: FormSalesProps) => {
+const FormSales = ({ products = [], category = [] }: FormSalesProps) => {
   const pathname = usePathname();
   const [selectedCategory, setSelectedCategory] = useState<number | null>(null);
 
